@@ -18,6 +18,17 @@ class WeightsDialog(QDialog):
         self.show()
 
     def accept(self):
+        slotRandomizer.slotWeights = [
+            self.ui.spinBox_s1.value(),
+            self.ui.spinBox_s2.value(),
+            self.ui.spinBox_s3.value(),
+            self.ui.spinBox_s4.value(),
+            self.ui.spinBox_s5.value(),
+            self.ui.spinBox_s6.value(),
+            self.ui.spinBox_s7.value(),
+            self.ui.spinBox_s8.value(),
+            self.ui.spinBox_s9.value(),
+        ]
         print(self.ui.spinBox_s1.value())
         self.close()
 
@@ -80,7 +91,7 @@ class SlotRandomizer():
     def __init__(self):
         self.keyboard = KeyboardController()
         self.listener = MouseListener(on_click=self.onClick)
-        self.slot_weights = [0] * 9
+        self.slotWeights = [0] * 9
 
     def onClick(self, x, y, button, pressed):
         if button != Button.right or not pressed:
@@ -88,7 +99,7 @@ class SlotRandomizer():
 
         time.sleep(0.05)
         slot = random.choices(
-            population=range(1, 10), weights=self.slot_weights
+            population=range(1, 10), weights=self.slotWeights
         )[0]
         print(slot)
         key = KeyCode.from_vk(0x30 + slot)
