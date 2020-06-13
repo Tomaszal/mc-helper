@@ -19,6 +19,7 @@ class IndicatorWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.setupWindow()
         self.setupWidgets()
+        self.active = False
 
     def setupWindow(self):
         self.setWindowFlags(
@@ -37,20 +38,32 @@ class IndicatorWindow(QMainWindow):
         )
 
     def setupWidgets(self):
-        label = QtWidgets.QLabel()
-        label.setStyleSheet(
+        self.label = QtWidgets.QLabel()
+        self.label.setStyleSheet(
             'background-color: rgba(0, 0, 0, 75%); border-radius: 10%;'
         )
-        icon = QtGui.QIcon.fromTheme('shuffle')
-        label.setPixmap(icon.pixmap(50, 50, mode=QtGui.QIcon.Active))
-        self.setCentralWidget(label)
+        self.icon = QtGui.QIcon.fromTheme('shuffle')
+        self.label.setPixmap(
+            self.icon.pixmap(50, 50, mode=QtGui.QIcon.Disabled)
+        )
+        self.setCentralWidget(self.label)
 
     def mousePressEvent(self, event):
-        QtWidgets.qApp.quit()
+        if event.button() == QtCore.Qt.LeftButton:
+            self.active = not self.active
+            mode = QtGui.QIcon.Active if self.active else QtGui.QIcon.Disabled
+            self.label.setPixmap(self.icon.pixmap(50, 50, mode=mode))
+
+        elif event.button() == QtCore.Qt.MiddleButton:
+            QtWidgets.qApp.quit()
+
+        elif event.button() == QtCore.Qt.RightButton:
+            dialog = WeightsDialog()
+            dialog.exec_()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    w = IndicatorWindow()
-    w.show()
+    indicator = IndicatorWindow()
+    indicator.show()
     sys.exit(app.exec_())
