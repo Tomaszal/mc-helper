@@ -15,6 +15,15 @@ class WeightsDialog(QDialog):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.ui.spinBox_s1.setValue(slotRandomizer.slotWeights[0])
+        self.ui.spinBox_s2.setValue(slotRandomizer.slotWeights[1])
+        self.ui.spinBox_s3.setValue(slotRandomizer.slotWeights[2])
+        self.ui.spinBox_s4.setValue(slotRandomizer.slotWeights[3])
+        self.ui.spinBox_s5.setValue(slotRandomizer.slotWeights[4])
+        self.ui.spinBox_s6.setValue(slotRandomizer.slotWeights[5])
+        self.ui.spinBox_s7.setValue(slotRandomizer.slotWeights[6])
+        self.ui.spinBox_s8.setValue(slotRandomizer.slotWeights[7])
+        self.ui.spinBox_s9.setValue(slotRandomizer.slotWeights[8])
         self.show()
 
     def accept(self):
@@ -29,7 +38,6 @@ class WeightsDialog(QDialog):
             self.ui.spinBox_s8.value(),
             self.ui.spinBox_s9.value(),
         ]
-        print(self.ui.spinBox_s1.value())
         self.close()
 
 
@@ -101,7 +109,6 @@ class SlotRandomizer():
         slot = random.choices(
             population=range(1, 10), weights=self.slotWeights
         )[0]
-        print(slot)
         key = KeyCode.from_vk(0x30 + slot)
         self.keyboard.press(key)
         time.sleep(0.05)
