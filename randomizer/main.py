@@ -13,6 +13,10 @@ class WeightsDialog(QDialog):
         self.ui.setupUi(self)
         self.show()
 
+    def accept(self):
+        print(self.ui.spinBox_s1.value())
+        self.close()
+
 
 class IndicatorWindow(QMainWindow):
     def __init__(self):
