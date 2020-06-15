@@ -5,9 +5,10 @@ import time
 # pylint: disable-msg=no-name-in-module
 from PyQt5 import QtGui, QtCore, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
-from dialog import Ui_Dialog
+from ui.dialog import Ui_Dialog
 from pynput.mouse import Button, Listener as MouseListener
 from pynput.keyboard import Key, KeyCode, Controller as KeyboardController
+from fbs_runtime.application_context.PyQt5 import ApplicationContext
 
 
 class WeightsDialog(QDialog):
@@ -124,8 +125,9 @@ class SlotRandomizer():
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    appCtx = ApplicationContext()
     slotRandomizer = SlotRandomizer()
     indicator = IndicatorWindow()
     indicator.show()
-    sys.exit(app.exec_())
+    exitCode = appCtx.app.exec_()
+    sys.exit(exitCode)

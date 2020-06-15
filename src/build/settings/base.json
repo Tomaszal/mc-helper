@@ -1,0 +1,6 @@
+{
+    "app_name": "mc-helper",
+    "author": "Tomaszal",
+    "main_module": "src/main/python/main.py",
+    "version": "0.1.0"
+}
