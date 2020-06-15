@@ -4,25 +4,22 @@ Ever find yourself trying to build using a random palette? Want to mix up some m
 
 Every time you right click to place a block, the script will choose a random slot based on your provided weights and select it. Thus creating a random block placement pattern.
 
-## Usage
+## Running the script
+
+The script requires Qt5 and Python 3 to be present on your system. To run it install and configure `pipenv` and run the following commands:
+
+``` 
+pipenv install
+pipenv run python main.py
+```
+
+## Using the script
 
 An overlay icon will show up on the right of your monitor after launching the script. You can interact with it in three different ways:
 
 * **Left-click** to toggle the randomizer on or off. The current state is indicated by the icon.
 * **Right-click** to open slot weight adjustment dialog. Here you can set the weight (probability) of a slot to be selected. 0 means a slot will not be considered.
 * **Middle-click** to exit the script.
-
-## Prerequisites
-
-Software:
-
-* Qt5
-* Python 3
-
-Python libraries:
-
-* PyQt5
-* pynput
 
 ## Development notes
 
