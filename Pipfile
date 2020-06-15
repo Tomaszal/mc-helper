@@ -4,11 +4,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+fbs = ">=0.8.6"
 
 [packages]
 pyqt5 = ">=5.15.0"
 pynput = ">=1.6.8"
-fbs = ">=0.8.6"
 
 [requires]
 python_version = "3.6"
