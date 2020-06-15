@@ -24,7 +24,7 @@ An overlay icon will show up on the right of your monitor after launching the ap
 Install [pipenv](https://pipenv.pypa.io/en/latest/) and run the following command to setup the project:
 
 ``` 
-pipenv install
+pipenv install --dev
 ```
 
 To run the app:

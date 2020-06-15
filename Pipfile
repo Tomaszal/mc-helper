@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 fbs = ">=0.8.6"
+pypiwin32 = {sys_platform = "== 'win32'"}
 
 [packages]
 pyqt5 = ">=5.15.0"
